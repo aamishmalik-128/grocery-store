@@ -6,7 +6,15 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\User\UserController;
 
 Route::get('/',[FrontController::class,'index'])->name('home');
-Route::get('/about',[FrontController::class,'about'])->name('about');
+Route::get('about',[FrontController::class,'about'])->name('about');
+Route::get('contact', [FrontController::class,'contact'])->name('contact');
+Route::get('faq', [FrontController::class,'faq'])->name('faq');
+Route::get('terms', [FrontController::class,'terms'])->name('terms');
+Route::get('privacy', [FrontController::class,'privacy'])->name('privacy');
+Route::get('blog', [FrontController::class,'blog'])->name('blog');
+Route::get('post/{slug}',[FrontController::class,'post'])->name('post');
+Route::get('products',[FrontController::class,'products'])->name('products');
+Route::get('product/{slug}',[FrontController::class,'product'])->name('product');
 
 Route::middleware('auth')->group(function(){
 Route::get('/dashboard',[UserController::class,'dashboard'])->name('dashboard');

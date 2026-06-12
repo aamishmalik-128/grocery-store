@@ -21,7 +21,7 @@
 <body>
 <div id="app">
     <div class="main-wrapper">
-        @yield('main_content')
+        @yield('page_main_content')
     </div>
 </div>
 
