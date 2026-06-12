@@ -21,12 +21,15 @@ class UserController extends Controller
         return view ('user.registration');
     }
     public function registration_submit(Request $request){
+
+    //validating inputs
         $request->validate([
             'name'=>'required',
             'email'=>'required|email|unique:users,email',
             'password'=>'required',
             'confirm_password'=>'required|same:password'
         ]);
+    //generating hash token
         $token=hash('sha256',time());
         $user= new User();
         $user->name=$request->name;
@@ -34,12 +37,14 @@ class UserController extends Controller
         $user->password=Hash::make($request->password);
         $user->token=$token;
         $user->save();
+    //sending links
         $link = route('registration_verify', [$token, $request->email]);
         $subject='Registration Verification';
         $message = "Click on the following link to verify your email: <a href='{$link}'>{$link}</a>";
         Mail::to($request->email)->send(new Websitemail($subject, $message));
         return redirect()->back()->with('success', 'Registration successful. Check your email for verification link.');
     }   
+
     public function registration_verify($token,$email){
      $user= User::where('email',$email)->where('token',$token)->first();
      if(!$user){
@@ -57,6 +62,7 @@ class UserController extends Controller
        return view('user.login');
     }
     public function login_submit(Request $request){
+        //validate
       $request->validate([
           'email'=>'required|email',
           'password'=>'required'
@@ -67,6 +73,7 @@ class UserController extends Controller
         'password'=>$check['password'],
         'status'=>1
       ];
+      //auth + guard +attempt fun to match with database
       if(Auth::guard('web')->attempt($data)){
         return redirect()->route('dashboard');
       }else{
