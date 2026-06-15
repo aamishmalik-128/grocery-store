@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreshMart - Your Online Grocery Store</title>
-    <link rel="icon" type="image/png" href="{{asset('dist-front/images/favicon.png')}}">
+    <title>SwiftStore - Your Online Grocery Store</title>
+    <link rel="icon" type="image/png" href="{{asset('uploads/swiftbuy_logo_header_2x.png')}}">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +32,9 @@
 @include('front.layouts.footer')
 
 @include('front.layouts.script')
+
+
+@yield('script')
     
 </body>
 </html>

@@ -1,4 +1,5 @@
+@include('front.home')
+<div class="container">
+    <h1>Welcome, {{ Auth::guard('web')->user()->name }} to the User Dashboard</h1>
+</div>
 
-@include('user.top')
-
-<h2> wellcome {{Auth::guard('web')->user()->name}} to the User Dashboard</h2>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\User\UserController;
 
 Route::get('/',[FrontController::class,'index'])->name('home');
@@ -15,6 +16,9 @@ Route::get('blog', [FrontController::class,'blog'])->name('blog');
 Route::get('post/{slug}',[FrontController::class,'post'])->name('post');
 Route::get('products',[FrontController::class,'products'])->name('products');
 Route::get('product/{slug}',[FrontController::class,'product'])->name('product');
+Route::get('cart',[FrontController::class,'cart'])->name('cart');
+Route::get('checkout',[FrontController::class,'checkout'])->name('checkout');
+ 
 
 Route::middleware('auth')->group(function(){
 Route::get('/dashboard',[UserController::class,'dashboard'])->name('dashboard');
@@ -50,6 +54,13 @@ Route::middleware('admin')->prefix('admin')->group(function () {
         ->name('admin_dashboard');
     Route::get('/admin_profile',[AdminController::class,'admin_profile'])->name('admin_profile');
 Route::post('/admin_profile_submit',[AdminController::class,'admin_profile_submit'])->name('admin_profile_submit');
+Route::get('user/index',[AdminUserController::class,'index'])->name('admin_user_index');
+Route::get('user/create',[AdminUserController::class,'create'])->name('admin_user_create');
+Route::post('user/store',[AdminUserController::class,'store'])->name('admin_user_store');
+Route::get('user/edit/{id}',[AdminUserController::class,'edit'])->name('admin_user_edit');
+Route::post('user/update/{id}',[AdminUserController::class,'update'])->name('admin_user_update');
+Route::get('user/delete/{id}',[AdminUserController::class,'delete'])->name('admin_user_delete');
+
 });
 Route::prefix('admin')->group(function(){
     Route::get('/',function (){

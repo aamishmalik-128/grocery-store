@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('main_content')
+@section('page_main_content')
 
 
 @include('admin.layouts.nav')

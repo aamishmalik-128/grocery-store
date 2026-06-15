@@ -13,6 +13,8 @@
                         <span>Dashboard</span></a></li>
                 <li class="{{(Request::is('admin/admin_profile')?'active' : '')}}"><a class="nav-link" href="{{route('admin_profile')}}"><i class="fas fa-user-edit"></i>
                         <span>Edit Profile</span></a></li>
+                <li class="{{(Request::is('admin/user/index')?'active' : '')}}"><a class="nav-link" href="{{route('admin_user_index')}}"><i class="fas fa-sign-out-alt"></i>
+                        <span>Manage Users</span></a></li>
                 <li><a class="nav-link" href="{{route('admin_logout')}}"><i class="fas fa-sign-out-alt"></i>
                         <span>Log Out</span></a></li>
 

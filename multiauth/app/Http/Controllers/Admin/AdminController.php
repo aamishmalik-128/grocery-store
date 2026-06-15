@@ -14,6 +14,7 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
+        
         return view('admin.dashboard.index');
     }
     public function login()
@@ -68,7 +69,7 @@ class AdminController extends Controller
         //generating and storing token
         $token = hash('sha256', time());
         $admin->token = $token;
-        $admin->update();
+        $admin->update(); 
 
         //sending link
         $link = route('admin_reset_password', [$token, $request->email]);

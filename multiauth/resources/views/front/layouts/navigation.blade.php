@@ -46,7 +46,7 @@
                     <a href="customer-wishlist.html" class="btn btn-outline-success position-relative me-2">
                         <i class="bi bi-heart"></i>
                     </a>
-                    <a href="cart.html" class="btn btn-success position-relative">
+                    <a href="{{route('cart')}}" class="btn btn-success position-relative">
                         <i class="bi bi-cart3"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             5

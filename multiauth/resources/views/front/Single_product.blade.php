@@ -58,7 +58,7 @@
                     <!-- Category -->
                     <div class="mb-3">
                         <span class="fw-bold">Category:</span> 
-                        <a href="products.html?category=fruits" class="text-success text-decoration-none">Fruits & Vegetables</a>
+                        <a href="{{route('products')}}" class="text-success text-decoration-none">Fruits & Vegetables</a>
                     </div>
 
                     <!-- Brand -->
@@ -280,7 +280,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="card product-card h-100 border-0 shadow-sm">
                             <div class="position-relative">
-                                <a href="product-single.html?id=2">
+                                <a href="{{route('products',1)}}">
                                     <div class="product-image bg-light d-flex align-items-center justify-content-center overflow-hidden">
                                         <img src="{{asset('dist-front/images/Orange.jpg')}}" alt="Fresh Oranges" class="img-fluid w-100 h-100">
                                     </div>
@@ -291,7 +291,7 @@
                             </div>
                             <div class="card-body">
                                 <p class="small text-muted mb-1">Fruits</p>
-                                <h6 class="card-title"><a href="product-single.html?id=2" class="text-decoration-none text-dark">Fresh Oranges</a></h6>
+                                <h6 class="card-title"><a href="{{route('product',1)}}" class="text-decoration-none text-dark">Fresh Oranges</a></h6>
                                 <div class="d-flex align-items-center mb-2">
                                     <span class="text-warning small">
                                         <i class="bi bi-star-fill"></i>

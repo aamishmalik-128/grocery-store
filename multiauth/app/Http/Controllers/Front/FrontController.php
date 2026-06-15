@@ -39,4 +39,10 @@ class FrontController extends Controller
     function product($slug){
         return view('front.single_product',compact('slug'));
     }
+    function cart(){
+        return view('front.cart');
+    }
+    function checkout(){
+   return view ('front.checkout');
+    }
 }

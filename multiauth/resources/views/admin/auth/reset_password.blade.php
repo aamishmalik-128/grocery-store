@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('main_content')
+@section('page_main_content')
 
  <section class="section">
             <div class="container container-login">
