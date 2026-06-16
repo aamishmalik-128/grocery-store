@@ -16,11 +16,13 @@
                             Categories
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{route('products')}}">Fresh Fruits</a></li>
-                            <li><a class="dropdown-item" href="{{route('products')}}">Fresh Vegetables</a></li>
-                            <li><a class="dropdown-item" href="{{route('products')}}">Seafood & Meat</a></li>
-                            <li><a class="dropdown-item" href="{{route('products')}}">Grains & Pulses</a></li>
-                            <li><a class="dropdown-item" href="{{route('products')}}">Condiments & Beverages</a></li>
+
+                            @php
+                            $product_categories=\App\Models\ProductCategory::orderBy('name','asc')->get();
+                            @endphp
+                            @foreach($product_categories as $item)
+                            <li><a class="dropdown-item" href="{{route('products')}}">{{$item->name}}</a></li>
+                            @endforeach
                         </ul>
                     </li>
                     <li class="nav-item">

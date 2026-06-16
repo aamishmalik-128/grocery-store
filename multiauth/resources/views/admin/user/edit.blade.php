@@ -1,9 +1,8 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.homemaster')
 
 @section('page_main_content')
 
-    @include('admin.layouts.nav')
-    @include('admin.layouts.sidebar')
+
 
     <div class="main-content">
         <section class="section">

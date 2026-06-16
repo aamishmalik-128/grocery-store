@@ -6,6 +6,7 @@
             <!-- Sidebar -->
             <div class="col-lg-3 col-md-4">
                 <div class="sidebar">
+
                     <!-- Categories Filter -->
                     <div class="filter-widget mb-4">
                         <h5 class="fw-bold mb-3">Categories</h5>
@@ -15,36 +16,14 @@
                                 All Products
                             </label>
                         </div>
+                        @foreach($product_categories as $item)
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="category" id="catFruits">
-                            <label class="form-check-label" for="catFruits">
-                                Fresh Fruits
+                            <input class="form-check-input" type="radio" name="category" id="cat{{$item->id}}">
+                            <label class="form-check-label" for="cat{{$item->id}}">
+                                {{$item->name}}
                             </label>
                         </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="category" id="catDairy">
-                            <label class="form-check-label" for="catDairy">
-                                Fresh Vegetables
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="category" id="catMeat">
-                            <label class="form-check-label" for="catMeat">
-                                Seafood & Meat
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="category" id="catBakery">
-                            <label class="form-check-label" for="catBakery">
-                                Grains & Pulses
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="category" id="catBeverages">
-                            <label class="form-check-label" for="catBeverages">
-                                Condiments & Beverages
-                            </label>
-                        </div>
+                        @endforeach
                     </div>
 
                     <!-- Price Filter -->
@@ -153,40 +132,6 @@
                         </div>
                     </div>
 
-                    <!-- Brand Filter -->
-                    <div class="filter-widget mb-4">
-                        <h5 class="fw-bold mb-3">Brand</h5>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="brand" id="brandAll" checked>
-                            <label class="form-check-label" for="brandAll">
-                                All Brands
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="brand" id="brand1">
-                            <label class="form-check-label" for="brand1">
-                                Fresh Harvest
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="brand" id="brand2">
-                            <label class="form-check-label" for="brand2">
-                                Organic Valley
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="brand" id="brand3">
-                            <label class="form-check-label" for="brand3">
-                                Green Farms
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="radio" name="brand" id="brand4">
-                            <label class="form-check-label" for="brand4">
-                                Nature's Best
-                            </label>
-                        </div>
-                    </div>
 
                     <!-- Reset Filters Button -->
                     <button class="btn btn-outline-success w-100">

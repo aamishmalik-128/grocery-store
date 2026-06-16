@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.loginmaster')
 
 @section('page_main_content')
 
@@ -26,7 +26,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div>
-                                            <a  href="{{route('admin_forget_password')}}">
+                                            <a  href="{{route('forget_password')}}">
                                                 Forget Password?
                                             </a>
                                         </div>

@@ -39,8 +39,8 @@
 
                     <!-- Price -->
                     <div class="price-section mb-4">
-                        <h3 class="text-success fw-bold d-inline" id="currentPrice">$4.99</h3>
-                        <span class="text-muted text-decoration-line-through fs-5 ms-2" id="originalPrice">$6.99</span>
+                        <h3 class="text-success fw-bold d-inline" id="currentPrice" style="color:#198754 !important;">$4.99</h3>
+                        <span class="text-muted text-decoration-line-through fs-5 ms-2" id="originalPrice" style="color:#6c757d !important;">$6.99</span>
                     </div>
 
                     <!-- Short Description -->
@@ -61,11 +61,7 @@
                         <a href="{{route('products')}}" class="text-success text-decoration-none">Fruits & Vegetables</a>
                     </div>
 
-                    <!-- Brand -->
-                    <div class="mb-3">
-                        <span class="fw-bold">Brand:</span> 
-                        <span class="text-muted">Fresh Harvest</span>
-                    </div>
+                   
 
                     <!-- Weight/Size Options -->
                     <div class="mb-4">
@@ -313,5 +309,84 @@
         </div>
     </div>
 </section>
+@endsection
+@section('script')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
 
+    var quantityInput  = document.getElementById('quantityInput');
+    var incrementBtn   = document.getElementById('incrementBtn');
+    var decrementBtn   = document.getElementById('decrementBtn');
+    var currentPriceEl = document.getElementById('currentPrice');
+    var originalPriceEl= document.getElementById('originalPrice');
+    var weightInputs    = document.querySelectorAll('input[name="weight"]');
+
+    // Get unit price/original price from whichever weight radio is currently checked
+    function getSelectedWeightPrices() {
+        var checked = document.querySelector('input[name="weight"]:checked');
+        if (!checked) {
+            return { price: 4.99, original: 6.99 };
+        }
+        return {
+            price: parseFloat(checked.getAttribute('data-price')),
+            original: parseFloat(checked.getAttribute('data-original'))
+        };
+    }
+
+    function getQuantity() {
+        var val = parseInt(quantityInput.value, 10);
+        if (isNaN(val) || val < 1) {
+            val = 1;
+            quantityInput.value = 1;
+        }
+        return val;
+    }
+
+    function updateTotalPrice() {
+        var prices = getSelectedWeightPrices();
+        var quantity = getQuantity();
+
+        var totalPrice = prices.price * quantity;
+        var originalTotal = prices.original * quantity;
+
+        currentPriceEl.textContent = '$' + totalPrice.toFixed(2);
+        originalPriceEl.textContent = '$' + originalTotal.toFixed(2);
+    }
+
+    // Weight option change handler
+    weightInputs.forEach(function (input) {
+        input.addEventListener('change', function () {
+            quantityInput.value = 1;
+            updateTotalPrice();
+        });
+    });
+
+    // Increment
+    if (incrementBtn) {
+        incrementBtn.addEventListener('click', function () {
+            quantityInput.value = getQuantity() + 1;
+            updateTotalPrice();
+        });
+    }
+
+    // Decrement
+    if (decrementBtn) {
+        decrementBtn.addEventListener('click', function () {
+            var current = getQuantity();
+            if (current > 1) {
+                quantityInput.value = current - 1;
+                updateTotalPrice();
+            }
+        });
+    }
+
+    // Manual typing in the quantity box
+    if (quantityInput) {
+        quantityInput.addEventListener('change', function () {
+            updateTotalPrice();
+        });
+    }
+
+});
+</script>
 @endsection
