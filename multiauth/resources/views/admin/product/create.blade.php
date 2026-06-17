@@ -45,6 +45,14 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        <div class="form-group col-lg-6 mb-3">
+                                            <label for="show_on_home">Show On Home</label>
+                                            <select name="show_on_home"  class="form-select">
+                                              
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
 
                                     </div>
 

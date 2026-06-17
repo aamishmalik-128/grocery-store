@@ -24,6 +24,8 @@
                                             <th>Name</th>
                                             <th>Slug</th>
                                             <th>Category</th>
+                                            <th>Show on Home</th>
+                                            <th>Variations</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -41,6 +43,16 @@
                                             <td>{{$product->name}}</td>
                                             <td>{{$product->slug}}</td>
                                             <td>{{$product->category->name ?? 'N/A' }}</td>
+                                            <td>
+                                                @if($product->show_on_home ==1)
+                                                <span class="badge bg-success">Yes</span>
+                                                @else
+                                                <span class="badge bg-danger">No</span>
+                                                @endif
+                                            </td>
+                                            <td> 
+                                                <a href='{{route('admin_product_variation', $product->id)}}' class="btn btn-info btn-sm">Product Variation</a>
+                                            </td>
                                             <td>
                                                 <a href="{{route('admin_product_edit',$product->id)}}" class="btn btn-warning btn-sm"> <i class="fas fa-edit"></i> </a>
                                                 <a href="{{route('admin_product_delete',$product->id)}}" class="btn btn-danger btn-sm" onclick=" return confirm('Are you sure?')"> <i class="fas fa-trash"></i> </a>

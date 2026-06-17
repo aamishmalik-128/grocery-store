@@ -53,11 +53,14 @@
 
                                         <div class="form-group col-lg-6 mb-3">
                                             <label for="product_category">Category</label>
-                                            <select name="product_category"  class="form-select">
+                                            <select name="product_category" class="form-select">
                                                 @foreach($product_categories as $item)
-                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                                <option value="{{$item->id}}" {{ $products->product_category == $item->id ? 'selected' : '' }}>
+                                                    {{$item->name}}
+                                                </option>
                                                 @endforeach
                                             </select>
+
                                         </div>
 
                                     </div>
@@ -66,6 +69,17 @@
                                         <div class="form-group col-lg-6 mb-3">
                                             <label for="description">Description</label>
                                             <textarea type="text" name="description" row='6' class="form-control editor h_100 "></textArea>
+                                        </div>
+                                        <div class="form-group col-lg-6 mb-3">
+                                            <label for="show_on_home">Show On Home</label>
+                                            <select name="show_on_home" class="form-select">
+                                                
+                                                <option value="1" {{$products->show_on_home == 1 ?'selected': ''}}>Yes</option>
+                                                <option value="0" {{$products->show_on_home == 0 ?'selected': ''}}>No</option>
+
+
+                                            </select>
+
                                         </div>
 
                                         <div class="form-group col-lg-6 mb-3">

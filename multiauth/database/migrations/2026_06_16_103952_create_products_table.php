@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('slug')->nullable();
             $table->text('short_description')->nullable();
             $table->text('description')->nullable();
+            $table->string('show_on_home')->nullable();
 
             // $table->decimal('sale_price',10,2)->default(0);
             //  $table->decimal('regular _price',10,2)->default(0);

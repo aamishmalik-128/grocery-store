@@ -163,22 +163,22 @@
                 <!-- Products Grid -->
                 <div class="row g-4">
                     <!-- Product 1 -->
+                    @foreach($products as $product)
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="card product-card h-100 border-0 shadow-sm">
                             <div class="position-relative">
-                                <a href="{{route('product',1)}}">
+                                <a href="{{route('product',$product->slug)}}">
                                     <div class="product-image bg-light d-flex align-items-center justify-content-center overflow-hidden">
-                                        <img src="{{asset('dist-front/images/Green Apple.jpg')}}" alt="Fresh Green Apples" class="img-fluid w-100 h-100">
+                                        <img src="{{asset('uploads/'.$product->photo)}}" alt="{{$product->name}}" class="img-fluid w-100 h-100">
                                     </div>
                                 </a>
-                                <span class="badge bg-danger position-absolute top-0 end-0 m-2">-20%</span>
                                 <button class="btn btn-sm btn-success position-absolute bottom-0 end-0 m-2">
                                     <i class="bi bi-cart-plus"></i>
                                 </button>
                             </div>
                             <div class="card-body">
-                                <p class="small text-muted mb-1">Fruits</p>
-                                <h6 class="card-title"><a href="{{route('product',1)}}" class="text-decoration-none text-dark">Fresh Green Apples</a></h6>
+                                <p class="small text-muted mb-1">{{$product->category->name ?? 'N/A'}}</p>
+                                <h6 class="card-title"><a href="{{route('product',$product->slug)}}" class="text-decoration-none text-dark">{{$product->name}}</a></h6>
                                 <div class="d-flex align-items-center mb-2">
                                     <span class="text-warning">
                                         <i class="bi bi-star-fill"></i>
@@ -191,87 +191,17 @@
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div>
-                                        <span class="text-success fw-bold fs-5">$4.99</span>
-                                        <span class="text-muted text-decoration-line-through small ms-1">$6.99</span>
+                                        @foreach($product->product_variations as $item)
+                                        <span class="fw-bold fs-5" style="color: #198754;">${{$item->sale_price}}</span>
+                                        <span class="text-muted text-decoration-line-through small ms-1">$ {{$item->regular_price}}</span>
+                                        @break
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Product 2 -->
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="card product-card h-100 border-0 shadow-sm">
-                            <div class="position-relative">
-                                <a href="{{route('product',1)}}">
-                                    <div class="product-image bg-light d-flex align-items-center justify-content-center overflow-hidden">
-                                        <img src="{{asset('dist-front/images/Egg.jpg')}}" alt="Farm Fresh Eggs" class="img-fluid w-100 h-100">
-                                    </div>
-                                </a>
-                                <span class="badge bg-success position-absolute top-0 end-0 m-2">New</span>
-                                <button class="btn btn-sm btn-success position-absolute bottom-0 end-0 m-2">
-                                    <i class="bi bi-cart-plus"></i>
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <p class="small text-muted mb-1">Dairy</p>
-                                <h6 class="card-title"><a href="{{route('product',1)}}" class="text-decoration-none text-dark">Farm Fresh Eggs (12)</a></h6>
-                                <div class="d-flex align-items-center mb-2">
-                                    <span class="text-warning">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </span>
-                                    <small class="text-muted ms-2">(5.0)</small>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <span class="text-success fw-bold fs-5">$5.99</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 3 -->
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="card product-card h-100 border-0 shadow-sm">
-                            <div class="position-relative">
-                                <a href="{{route('product',1)}}">
-                                    <div class="product-image bg-light d-flex align-items-center justify-content-center overflow-hidden">
-                                        <img src="{{asset('dist-front/images/Coconuts.jpg')}}" alt="Fresh Coconuts" class="img-fluid w-100 h-100">
-                                    </div>
-                                </a>
-                                <button class="btn btn-sm btn-success position-absolute bottom-0 end-0 m-2">
-                                    <i class="bi bi-cart-plus"></i>
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <p class="small text-muted mb-1">Fruits</p>
-                                <h6 class="card-title"><a href="{{route('product',1)}}" class="text-decoration-none text-dark">Fresh Coconuts</a></h6>
-                                <div class="d-flex align-items-center mb-2">
-                                    <span class="text-warning">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                    </span>
-                                    <small class="text-muted ms-2">(4.0)</small>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <span class="text-success fw-bold fs-5">$3.49</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Add more products as needed (repeat structure) -->
-                    <!-- Product 4-12 would go here -->
+                    @endforeach
                     
                 </div>
 
